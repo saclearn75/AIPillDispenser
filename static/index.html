@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Medication Check-in</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    max-width: 560px; margin: 0 auto; padding: 24px;
+    display: flex; flex-direction: column; gap: 20px; min-height: 90vh;
+  }
+  h1 { font-size: 1.3rem; margin: 0; }
+  #orb {
+    width: 96px; height: 96px; border-radius: 50%; margin: 8px auto;
+    background: radial-gradient(circle at 35% 30%, #60a5fa, #2563eb);
+    transition: transform .15s ease, box-shadow .15s ease; opacity: .5;
+  }
+  #orb.listening { opacity: 1; box-shadow: 0 0 0 8px rgba(37,99,235,.15); }
+  #orb.speaking  { opacity: 1; transform: scale(1.12); box-shadow: 0 0 0 14px rgba(37,99,235,.22); }
+  #status { text-align: center; font-size: .9rem; opacity: .7; min-height: 1.2em; }
+  #log { font-size: 1.05rem; line-height: 1.5; display: flex; flex-direction: column; gap: 8px; }
+  .msg { padding: 10px 14px; border-radius: 14px; max-width: 85%; }
+  .agent { background: rgba(37,99,235,.15); align-self: flex-start; }
+  .user  { background: rgba(127,127,127,.15); align-self: flex-end; }
+  button {
+    font-size: 1.1rem; padding: 14px 20px; border-radius: 12px;
+    border: none; background: #2563eb; color: #fff; cursor: pointer;
+  }
+  button:disabled { opacity: .4; cursor: default; }
+  .hidden { display: none; }
+  #done { font-size: 1.4rem; text-align: center; padding: 20px; }
+  #err { color: #dc2626; font-size: .9rem; }
+</style>
+</head>
+<body>
+  <h1>💊 Medication Check-in</h1>
+  <div id="orb"></div>
+  <div id="status">Tap start when you're ready.</div>
+
+  <button id="start">Start check-in</button>
+  <button id="stop" class="hidden">End</button>
+
+  <div id="log"></div>
+  <div id="done" class="hidden">✅ All done. Here are your meds.</div>
+  <div id="err"></div>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

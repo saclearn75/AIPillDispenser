@@ -1,0 +1,11 @@
+# secrets — never commit
+.env
+
+# runtime data
+answers.jsonl
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
